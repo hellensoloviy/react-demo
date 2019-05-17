@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 
 
-const TableHeader = () => {
+const TableHeader = props => {
+  //some test new value just to try
+  const newElement = {name: 'Nick', job: 'Tester'}
+
   return (
     <thead>
       <tr>
         <th>Name</th>
         <th>Job</th>
+        <td>
+          <button onClick={() => props.addCharacter(newElement)}>New example</button>
+        </td>
       </tr>
     </thead>
   )
@@ -30,11 +36,11 @@ const TableBody = props => {
 
 class Table extends Component {
   render() {
-    const { characterData, removeCharacter } = this.props
+    const { characterData, removeCharacter, addCharacter } = this.props
 
     return (
       <table>
-        <TableHeader />
+        <TableHeader addCharacter={addCharacter} />
         <TableBody characterData={characterData} removeCharacter={removeCharacter} />
       </table>
     )
